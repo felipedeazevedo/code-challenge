@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.felipe.codechallange.dtos.TrabalhadorDto;
-import com.felipe.codechallange.entities.Trabalhador;
+import com.felipe.codechallange.models.Trabalhador;
 import com.felipe.codechallange.services.TrabalhadorService;
 
 import io.swagger.annotations.Api;
@@ -39,9 +39,9 @@ public class TrabalhadorController {
 	@ApiOperation(value = "Salva um novo trabalhador.")
 	@PostMapping
 	public ResponseEntity<Object> saveTrabalhador(@RequestBody @Valid TrabalhadorDto trabalhadorDto) {
-        var trabalhador = new Trabalhador();
-        BeanUtils.copyProperties(trabalhadorDto, trabalhador);
-		return ResponseEntity.status(HttpStatus.CREATED).body(trabalhadorService.save(trabalhador));
+        var trabalhadorModel = new Trabalhador();
+        BeanUtils.copyProperties(trabalhadorDto, trabalhadorModel);
+		return ResponseEntity.status(HttpStatus.CREATED).body(trabalhadorService.save(trabalhadorModel));
 	}
 	
 	@ApiOperation(value = "Busca todos os trabalhadores.")
@@ -79,10 +79,10 @@ public class TrabalhadorController {
 		if (!trabalhadorOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Trabalhador não encontrado.");
 		}
-		var trabalhador = new Trabalhador();
-		BeanUtils.copyProperties(trabalhadorDto, trabalhador);
-		trabalhador.setId(trabalhadorOptional.get().getId());
-		return ResponseEntity.status(HttpStatus.OK).body(trabalhadorService.save(trabalhador));
+		var trabalhadorModel = new Trabalhador();
+		BeanUtils.copyProperties(trabalhadorDto, trabalhadorModel);
+		trabalhadorModel.setId(trabalhadorOptional.get().getId());
+		return ResponseEntity.status(HttpStatus.OK).body(trabalhadorService.save(trabalhadorModel));
 	}
 	
 }

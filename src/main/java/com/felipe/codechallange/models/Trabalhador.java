@@ -1,4 +1,4 @@
-package com.felipe.codechallange.entities;
+package com.felipe.codechallange.models;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

@@ -5,8 +5,8 @@ import java.util.List;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.felipe.codechallange.entities.Cargo;
-import com.felipe.codechallange.entities.Trabalhador;
+import com.felipe.codechallange.models.Cargo;
+import com.felipe.codechallange.models.Trabalhador;
 
 import lombok.Getter;
 import lombok.Setter;

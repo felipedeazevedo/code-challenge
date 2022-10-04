@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.felipe.codechallange.dtos.SetorDto;
-import com.felipe.codechallange.entities.Setor;
+import com.felipe.codechallange.models.Setor;
 import com.felipe.codechallange.services.SetorService;
 
 import io.swagger.annotations.Api;
@@ -42,9 +42,9 @@ public class SetorController {
         if (setorService.existsByNome(setorDto.getNome())) {
             return ResponseEntity.status(HttpStatus.CONFLICT).body("Este nome já está vinculado a um setor.");
         }
-        var setor = new Setor();
-        BeanUtils.copyProperties(setorDto, setor);
-		return ResponseEntity.status(HttpStatus.CREATED).body(setorService.save(setor));
+        var setorModel = new Setor();
+        BeanUtils.copyProperties(setorDto, setorModel);
+		return ResponseEntity.status(HttpStatus.CREATED).body(setorService.save(setorModel));
 	}
 	
 	@ApiOperation(value = "Busca todos os setores.")
@@ -82,10 +82,10 @@ public class SetorController {
 		if (!setorOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Setor não encontrado.");
 		}
-		var setor = new Setor();
-		BeanUtils.copyProperties(setorDto, setor);
-		setor.setId(setorOptional.get().getId());
-		return ResponseEntity.status(HttpStatus.OK).body(setorService.save(setor));
+		var setorModel = new Setor();
+		BeanUtils.copyProperties(setorDto, setorModel);
+		setorModel.setId(setorOptional.get().getId());
+		return ResponseEntity.status(HttpStatus.OK).body(setorService.save(setorModel));
 	}
 	
 }

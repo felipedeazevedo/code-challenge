@@ -3,8 +3,8 @@ package com.felipe.codechallange.dtos;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
-import com.felipe.codechallange.entities.Cargo;
-import com.felipe.codechallange.entities.Setor;
+import com.felipe.codechallange.models.Cargo;
+import com.felipe.codechallange.models.Setor;
 
 import lombok.Getter;
 import lombok.Setter;

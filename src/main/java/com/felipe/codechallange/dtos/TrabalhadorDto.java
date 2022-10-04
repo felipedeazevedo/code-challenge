@@ -4,8 +4,8 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.felipe.codechallange.entities.Cargo;
-import com.felipe.codechallange.entities.Setor;
+import com.felipe.codechallange.models.Cargo;
+import com.felipe.codechallange.models.Setor;
 
 import lombok.Getter;
 import lombok.Setter;

@@ -21,7 +21,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.felipe.codechallange.dtos.CargoDto;
-import com.felipe.codechallange.entities.Cargo;
+import com.felipe.codechallange.models.Cargo;
 import com.felipe.codechallange.services.CargoService;
 
 import io.swagger.annotations.Api;
@@ -39,9 +39,9 @@ public class CargoController {
 	@ApiOperation(value = "Salva um novo cargo")
 	@PostMapping
 	public ResponseEntity<Object> saveCargo(@RequestBody @Valid CargoDto cargoDto) {
-        var cargo = new Cargo();
-        BeanUtils.copyProperties(cargoDto, cargo);
-		return ResponseEntity.status(HttpStatus.CREATED).body(cargoService.save(cargo));
+        var cargoModel = new Cargo();
+        BeanUtils.copyProperties(cargoDto, cargoModel);
+		return ResponseEntity.status(HttpStatus.CREATED).body(cargoService.save(cargoModel));
 	}
 	
 	@ApiOperation(value = "Busca todos os cargos.")
@@ -79,10 +79,10 @@ public class CargoController {
 		if (!cargoOptional.isPresent()) {
 			return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Cargo não encontrado.");
 		}
-		var cargo = new Cargo();
-		BeanUtils.copyProperties(cargoDto, cargo);
-		cargo.setId(cargoOptional.get().getId());
-		return ResponseEntity.status(HttpStatus.OK).body(cargoService.save(cargo));
+		var cargoModel = new Cargo();
+		BeanUtils.copyProperties(cargoDto, cargoModel);
+		cargoModel.setId(cargoOptional.get().getId());
+		return ResponseEntity.status(HttpStatus.OK).body(cargoService.save(cargoModel));
 	}
 	
 }

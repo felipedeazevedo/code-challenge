@@ -8,7 +8,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
-import com.felipe.codechallange.entities.Trabalhador;
+import com.felipe.codechallange.models.Trabalhador;
 import com.felipe.codechallange.repositories.TrabalhadorRepository;
 
 import lombok.RequiredArgsConstructor;
